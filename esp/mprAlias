@@ -1,0 +1,1 @@
+alias mpr='mpremote connect /dev/tty.usbserial-0001'
