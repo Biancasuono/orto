@@ -14,16 +14,22 @@ def connect_wifi():
     print("connected")
 
 # per interrompere ctrl-c
-def loop(sleep_seconds=0.1):
+def loop(sleep_ms,send_count):
     adc = ADC(0)
     while True:
-        r=adc.read()
+        pacco=""
+        for i in range(send_count): #ciclo che ripete send_count il numero di vote il corpo che riceve
+                                    # si ripete tutto qullo che sta dentro "for"
+            r=adc.read()
+            pacco=pacco+str(r)+"|"# r numero letto
+            time.sleep(sleep_ms*0.001)
+
         try:
-            urequests.get("http://192.168.1.202:8000/?ecg_value="+str(r))
+            urequests.get("http://192.168.1.202:8000/?ecg_values="+pacco+"&separator=I&delayms="+str(sleep_ms))
         except:
             pass
         print(r)
         time.sleep(sleep_seconds)
 
 connect_wifi()
-loop()
+loop(100,100)
