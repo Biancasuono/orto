@@ -1,4 +1,4 @@
-#N canvas 525 32 450 300 12;
+#N canvas 623 456 450 300 12;
 #X floatatom 283 98 5 0 0 0 - - - 0;
 #X obj 257 171 print tcp;
 #X msg 178 3 listen 3001;
@@ -15,3 +15,5 @@
 #X connect 6 1 0 0;
 #X connect 7 0 3 0;
 #X connect 7 0 5 0;
+#X connect 8 0 4 0;
+#X connect 8 0 4 1;
